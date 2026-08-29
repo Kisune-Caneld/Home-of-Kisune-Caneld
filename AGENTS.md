@@ -1,18 +1,21 @@
 # Agent Guidelines for Home-of-Kisune-Caneld
 
-Welcome to the Home-of-Kisune-Caneld project! When assisting with this repository, please adhere to the following rules:
+The HOKC project is the homepage of the character Kisune Caneld. It features a design inspired by the Notion Homepage Layout combined with a blue nostalgia theme. It utilizes WebGL and WebGL2 for the frontend and REST architecture for the backend.
 
-## Project Structure
-- **Backend**: A Django application managed with `uv`. Located in the `backend/` directory.
-- **Web**: A Next.js (React) frontend managed with `npm`. Located in the `web/` directory.
+## Important Rules
+1. Do not include comments in the code in any form unless I ask you to.
+2. Always maintain a consistent coding style. Avoid switching between styles—using style A one day and style B the next.
+3. Always run validation using the functions provided in Magefile (e.g. `app-quality-check`,`frontend-quality-check`, `backend-quality-check`) every time there is a change in the code.
+4. Never ask me about accessing `.env`; you are only allowed to access `.env.example` at most.
+5. If my instructions are too ambiguous, you must ask for clarification.
+6. Always read the AGENTS.md file in both the web/ and backend/ directories when you work in those two folders.
+7. Follow the three modes I specified: [PLAN], [CODE], [TEST].
 
-## Automation & Running the App
-We use Mage (Go) as our automation tool. The Magefile targets are located in `scripts/magefile` but are imported in the root `magefile.go`.
-Always run the following commands from the **project root**:
+## The three mode
+1. [PLAN]: This is the default mode; you will plan the implementation based on my requirements but will not write any code unless [CODE] is included in the input.
+2. [CODE]: You may only add, edit, or delete source code when [CODE] is present in the input. Even if I say there’s a bug and it needs to be fixed urgently, you must wait for [CODE] or [TEST]. 
+3. [TEST]: This mode is intended for writing unit tests or fixing bugs. You are only permitted to work within the scope of "testing" and must not go beyond the limits of editing unrelated content. 
 
-- `mage dependancyCheck`: Syncs backend dependencies (`uv sync`) and installs frontend dependencies (`npm install`). Run this whenever dependencies change.
-- `mage appRun`: Starts both the Django backend and Next.js frontend concurrently. Use this to spin up the local development environment.
-
-## General Coding Standards
-- Follow the existing conventions in `backend/` (Python/Django) and `web/` (TypeScript/Next.js/React).
-- Prefer using the `mage` targets over running `uv` or `npm` commands individually when starting the servers or installing overall project dependencies.
+## Deployment Notes
+The deployment process will involve two platforms: Vercel for the web and backend, and Supabase for the database. Therefore, during development, you should take steps to ensure a smooth deployment later on.
+ 

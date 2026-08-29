@@ -1,3 +1,6 @@
 from django.test import TestCase
 
-# Create your tests here.
+
+class BackendSmokeTestCase(TestCase):
+    def test_smoke(self):
+        self.assertTrue(True)
