@@ -55,7 +55,7 @@ jobs:
         run: npm ci
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@1edb52594c857e2b5b13128931090f0640537287
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d
         with:
           enable-cache: true
 
@@ -95,7 +95,7 @@ jobs:
         run: npm ci
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@1edb52594c857e2b5b13128931090f0640537287
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d
         with:
           enable-cache: true
 
@@ -126,7 +126,7 @@ jobs:
           severity: "CRITICAL,HIGH"
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@1edb52594c857e2b5b13128931090f0640537287
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d
         with:
           enable-cache: true
 
