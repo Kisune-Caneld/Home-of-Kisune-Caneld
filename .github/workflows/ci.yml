@@ -1,0 +1,135 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+permissions:
+  contents: read
+
+jobs:
+  gitleaks:
+    name: Gitleaks Secret Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@f586c14365d4643c6aa59d472ae6e984bf47bb34
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  app-build:
+    name: App Build
+    needs: [gitleaks]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+
+      - name: Setup Go
+        uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34
+        with:
+          go-version: "1.23"
+
+      - name: Install Mage
+        run: go install github.com/magefile/mage@latest
+
+      - name: Setup Node.js
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "web/package-lock.json"
+
+      - name: Install Frontend Dependencies
+        working-directory: web
+        run: npm ci
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@1edb52594c857e2b5b13128931090f0640537287
+        with:
+          enable-cache: true
+
+      - name: Install Backend Dependencies
+        run: uv sync --all-packages --group dev
+
+      - name: Run App Build
+        run: mage appBuild
+
+  app-check:
+    name: App Quality Check
+    needs: [app-build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+
+      - name: Setup Go
+        uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34
+        with:
+          go-version: "1.23"
+
+      - name: Install Mage
+        run: go install github.com/magefile/mage@latest
+
+      - name: Setup Node.js
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "web/package-lock.json"
+
+      - name: Install Frontend Dependencies
+        working-directory: web
+        run: npm ci
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@1edb52594c857e2b5b13128931090f0640537287
+        with:
+          enable-cache: true
+
+      - name: Install Backend Dependencies
+        run: uv sync --all-packages --group dev
+
+      - name: Run App Quality Check
+        run: mage appQualityCheck
+
+  security-workflows:
+    name: Security Workflows
+    needs: [app-check]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+
+      - name: Run Trivy Vulnerability Scanner
+        uses: aquasecurity/trivy-action@6c175e9c4083a92bbca2f9724c8a5e33bc2d97a5
+        with:
+          scan-type: "fs"
+          scan-ref: "."
+          format: "table"
+          severity: "CRITICAL,HIGH"
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@1edb52594c857e2b5b13128931090f0640537287
+        with:
+          enable-cache: true
+
+      - name: Run Semgrep Security Scan
+        run: uvx semgrep scan --config auto --error
+

@@ -1,0 +1,29 @@
+name: Zizmor CI Security
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+permissions:
+  contents: read
+
+jobs:
+  zizmor:
+    name: Zizmor Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@1edb52594c857e2b5b13128931090f0640537287
+        with:
+          enable-cache: true
+
+      - name: Run Zizmor
+        run: uvx zizmor .
+
