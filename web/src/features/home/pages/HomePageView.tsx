@@ -66,8 +66,6 @@ interface HomePageViewProps {
     footer: {
       copyright: string;
       version: string;
-      madeWith: string;
-      andTea: string;
     };
   };
   locale: string;
