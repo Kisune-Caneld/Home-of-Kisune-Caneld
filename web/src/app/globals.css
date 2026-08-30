@@ -1,26 +1,93 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --blue-950: #18324a;
+  --blue-800: #24558a;
+  --blue-600: #3f73b8;
+  --blue-300: #8dbbe3;
+  --blue-100: #dcecf8;
+  --surface: #fffdf8;
+  --surface-blue: #f4f7fa;
+  --surface-card: #ffffff;
+  --text-main: #18324a;
+  --text-muted: #66829d;
+  --accent-green: #72b34a;
+  --accent-yellow: #f4d878;
+  --accent-lavender: #b8b7dd;
+  --rain-gray: #8999a8;
+  --background: #f4f7fa;
+  --foreground: #18324a;
+}
+
+.dark {
+  --blue-950: #dcecf8;
+  --blue-800: #8dbbe3;
+  --blue-600: #60a5fa;
+  --blue-300: #24558a;
+  --blue-100: #18324a;
+  --surface: #0e2133;
+  --surface-blue: #13273d;
+  --surface-card: #14283e;
+  --text-main: #f0f7fc;
+  --text-muted: #8dbbe3;
+  --background: #0a1724;
+  --foreground: #f0f7fc;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-blue-950: var(--blue-950);
+  --color-blue-800: var(--blue-800);
+  --color-blue-600: var(--blue-600);
+  --color-blue-300: var(--blue-300);
+  --color-blue-100: var(--blue-100);
+  --color-surface: var(--surface);
+  --color-surface-blue: var(--surface-blue);
+  --color-surface-card: var(--surface-card);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-accent-green: var(--accent-green);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-lavender: var(--accent-lavender);
+  --color-rain-gray: var(--rain-gray);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+  overflow-x: hidden;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #24558a rgba(24, 50, 74, 0.04);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(24, 50, 74, 0.04);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #24558a;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #18324a;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #0e2133;
 }

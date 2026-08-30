@@ -1,0 +1,59 @@
+{
+  "hero": {
+    "roomTitle": "NGÔI NHÀ NHỎ CỦA MÌNH",
+    "subtitle": "Một nơi yên tĩnh để sáng tạo và thư giản sau khoảng thời gian OT.",
+    "status": "🌧 Chiều mưa · đang phát triển Home-of-Kisune-Caneld",
+    "onlineBadge": "TRỰC TUYẾN · HỆ THỐNG ỔN ĐỊNH",
+    "localTime": "GIỜ ĐỊA PHƯƠNG"
+  },
+  "nav": {
+    "header": "NHÀ CỦA KISUNE CANELD",
+    "title": "ĐIỀU HƯỚNG",
+    "home": "Trang chủ",
+    "aboutMe": "Giới thiệu",
+    "gallery": "Bộ sưu tập",
+    "chat": "Trò chuyện",
+    "lightMode": "Sáng",
+    "darkMode": "Tối",
+    "close": "Đóng điều hướng"
+  },
+  "den": {
+    "title": "GÓC NHỎ MÀU XANH",
+    "subtitle": "Góc riêng tư & không gian sáng tạo cá nhân",
+    "nowPlaying": "ĐANG PHÁT",
+    "musicTrack": "Birds Of A Feather · Billie Eilish",
+    "readingTitle": "TÂM ĐẮC",
+    "readingBook": "Chính là cái đồ án/khoá luận đang thực hiện.",
+    "moodTitle": "TÂM TRẠNG",
+    "moodText": "Khá chill, suy tư nhiều thứ và muốn uống cà phê",
+    "hobbyTitle": "SỞ THÍCH",
+    "hobbyText": "Vẽ OC và sáng tạo để giết thời gian."
+  },
+  "calendar": {
+    "title": "LỊCH",
+    "today": "Hôm nay",
+    "weekdays": ["T2", "T3", "T4", "T5", "T6", "T7", "CN"],
+    "months": [
+      "Tháng 1",
+      "Tháng 2",
+      "Tháng 3",
+      "Tháng 4",
+      "Tháng 5",
+      "Tháng 6",
+      "Tháng 7",
+      "Tháng 8",
+      "Tháng 9",
+      "Tháng 10",
+      "Tháng 11",
+      "Tháng 12"
+    ]
+  },
+  "common": {
+    "deploy": "Triển khai ngay",
+    "docs": "Tài liệu"
+  },
+  "footer": {
+    "copyright": "© 2026 Kisune Caneld · Trang nhà cá nhân",
+    "version": "PHIÊN BẢN 1.0.0"
+  }
+}

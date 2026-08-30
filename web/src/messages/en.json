@@ -1,0 +1,59 @@
+{
+  "hero": {
+    "roomTitle": "My Little Sanctuary",
+    "subtitle": "A quiet place to create and unwind after working overtime.",
+    "status": "🌧 Rainy afternoon · working on Home-of-Kisune-Caneld",
+    "onlineBadge": "ONLINE · SYSTEM OK",
+    "localTime": "VIETNAM LOCAL TIME"
+  },
+  "nav": {
+    "header": "KISUNE CANELD'S HOME",
+    "title": "NAVIGATION",
+    "home": "Home",
+    "aboutMe": "About Me",
+    "gallery": "Gallery",
+    "chat": "Chat",
+    "lightMode": "Light",
+    "darkMode": "Dark",
+    "close": "Close"
+  },
+  "den": {
+    "title": "THE LITTLE BLUE DEN",
+    "subtitle": "Personal corner & creative sanctuary",
+    "nowPlaying": "NOW PLAYING",
+    "musicTrack": "Birds Of A Feather · Billie Eilish",
+    "readingTitle": "READING",
+    "readingBook": "Y2K Web Aesthetics & Interface Design",
+    "moodTitle": "MOOD",
+    "moodText": "Cozy, focused, drinking warm tea ☕",
+    "hobbyTitle": "HOBBY",
+    "hobbyText": "Pixel Art & Creative WebGL Coding"
+  },
+  "calendar": {
+    "title": "CALENDAR",
+    "today": "Today",
+    "weekdays": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ]
+  },
+  "common": {
+    "deploy": "Deploy Now",
+    "docs": "Documentation"
+  },
+  "footer": {
+    "copyright": "© 2026 Kisune Caneld · Homepage",
+    "version": "VER 1.0.0"
+  }
+}
