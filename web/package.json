@@ -34,7 +34,7 @@
     "eslint-plugin-security": "^4.1.0",
     "prettier": "^3.9.9",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^7"
   },
   "allowScripts": {
     "unrs-resolver@1.12.2": true
